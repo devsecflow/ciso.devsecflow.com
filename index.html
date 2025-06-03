@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leading Modern Security Programs - CISO Executive Course</title>
+    <meta name="description" content="A 4-Day Executive Course for CISOs and Security Leaders focusing on resilience, AI risk governance, and modern engineering practices.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --success: #38a169;
+            --warning: #d69e2e;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #ffffff;
+            --bg-light: #f7fafc;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #a0d2eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero .description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #2c5282;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
+        }
+        
+        /* Main Content */
+        .main {
+            padding: 4rem 0;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .card ul {
+            list-style: none;
+        }
+        
+        .card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        /* Day Cards */
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .day-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .day-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent), var(--warning));
+        }
+        
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .day-number {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .day-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .day-theme {
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        /* What's Included Section */
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .included-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--bg-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        .contact-item h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .next-session {
+            background: linear-gradient(135deg, var(--success), #48bb78);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .next-session h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .next-session p {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .days-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Scroll animations will be handled by JavaScript */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="hero animate-fade-in">
+                <h1>Leading Modern Security Programs</h1>
+                <p class="subtitle">A 4-Day Executive Course for CISOs and Security Leaders</p>
+                <p class="description">
+                    This comprehensive course equips senior security professionals to navigate the evolving landscape of cybersecurity. With a focus on resilience, AI risk governance, and modern engineering practices, the program prepares CISOs to lead security transformation across complex, high-stakes environments.
+                </p>
+                <a href="mailto:CISOTraining@devsecflow.com" class="cta-button">Contact Us Today</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Who Should Attend & Key Outcomes -->
+            <section class="section scroll-animate">
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Who Should Attend</h3>
+                        <ul>
+                            <li>Chief Information Security Officers (CISOs)</li>
+                            <li>Deputy CISOs and Heads of Security Risk or GRC</li>
+                            <li>Security Leaders in regulated or critical sectors</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Key Outcomes</h3>
+                        <ul>
+                            <li>Build operational resilience across systems and teams</li>
+                            <li>Govern AI systems and manage emerging technology risks</li>
+                            <li>Lead secure-by-design transformations with engineering rigour</li>
+                            <li>Communicate effectively with boards and regulators</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Curriculum -->
+            <section class="section scroll-animate">
+                <h2>Course Curriculum</h2>
+                <div class="days-grid">
+                    <div class="day-card">
+                        <div class="day-number">1</div>
+                        <h3>Resilience-Driven Security Leadership</h3>
+                        <p class="day-theme">Theme: Operational Resilience as a Business Imperative</p>
+                        <ul>
+                            <li>Redefining security for resilience</li>
+                            <li>Business continuity, system recovery, and third-party risk</li>
+                            <li>Accountability and measurement at the executive level</li>
+                            <li><strong>Workshop:</strong> Build your Resilience Readiness Framework</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-number">2</div>
+                        <h3>Governing AI Risk in Cybersecurity</h3>
+                        <p class="day-theme">Theme: AI-Augmented Security, Risk, and Governance</p>
+                        <ul>
+                            <li>Common AI failure modes: hallucination, drift, misuse</li>
+                            <li>AI lifecycle governance: transparency, validation, risk registers</li>
+                            <li>Use of AI in SOC operations: detection, triage, automation</li>
+                            <li><strong>Workshop:</strong> Create an AI Risk Register and governance map</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-number">3</div>
+                        <h3>Engineering for Resilience with Chaos Principles</h3>
+                        <p class="day-theme">Theme: Designing Secure Systems that Degrade Gracefully</p>
+                        <ul>
+                            <li>Introduction to security chaos engineering</li>
+                            <li>Simulating failure in authentication, IAM, detection systems</li>
+                            <li>Observability and recovery metrics</li>
+                            <li><strong>Workshop:</strong> Chaos Engineering Test Design</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-number">4</div>
+                        <h3>Executive Simulation & Strategic Planning</h3>
+                        <p class="day-theme">Theme: Practising Strategic Security Leadership</p>
+                        <ul>
+                            <li>Incident response simulation: 24-Hour Executive Clock</li>
+                            <li>Board-level communication and leadership under pressure</li>
+                            <li>Strategic planning and delivery frameworks</li>
+                            <li><strong>Deliverables:</strong> Executive Brief + 90-Day Resilience Plan</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What's Included -->
+            <section class="section scroll-animate">
+                <h2>What's Included</h2>
+                <div class="included-grid">
+                    <div class="included-item">
+                        <h4>📋 Templates & Frameworks</h4>
+                        <p>Resilience assessment and planning templates</p>
+                    </div>
+                    <div class="included-item">
+                        <h4>🤖 AI Risk Toolkit</h4>
+                        <p>AI risk register and governance toolkit</p>
+                    </div>
+                    <div class="included-item">
+                        <h4>⚡ Engineering Playbooks</h4>
+                        <p>Security chaos engineering playbooks</p>
+                    </div>
+                    <div class="included-item">
+                        <h4>🎯 Executive Resources</h4>
+                        <p>Board briefing checklists and scenario assets</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Delivery Options -->
+            <section class="section scroll-animate">
+                <h2>Delivery Options</h2>
+                <div class="card" style="max-width: 600px; margin: 0 auto;">
+                    <ul>
+                        <li>On-site or virtual delivery</li>
+                        <li>Private executive cohort options available</li>
+                        <li>Post-course peer coaching and strategy clinics</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Get Started Today</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>📧 Email</h4>
+                    <p><a href="mailto:CISOTraining@devsecflow.com" style="color: var(--accent); text-decoration: none;">CISOTraining@devsecflow.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>🌐 Website</h4>
+                    <p><a href="https://ciso.devsecflow.com" style="color: var(--accent); text-decoration: none;">ciso.devsecflow.com</a></p>
+                </div>
+            </div>
+            
+            <div class="next-session">
+                <h3>Next Session</h3>
+                <p>October 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-animate elements
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.day-card, .card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
